@@ -24,12 +24,12 @@ describe('ATM', () => {
     const billAmmounts = [10, 10, 10, 10, 10]
     const atm = new ATM(bills, billAmmounts)
     const configurations = atm.getConfigurations(300)
-    const higherBills = arraySummation(configurations.moreHigherBills)
-    const lowerBills = arraySummation(configurations.moreLowerBills)
+    const higherBills = summation(configurations.moreHigherBills)
+    const lowerBills = summation(configurations.moreLowerBills)
     expect(higherBills).toBeLessThan(lowerBills)
   })
 
-  function arraySummation (array: number[]): number {
+  function summation (array: number[]): number {
     return array.reduce((a: number, b: number) => a + b, 0)
   }
 })
