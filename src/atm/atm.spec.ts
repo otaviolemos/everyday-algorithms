@@ -19,7 +19,7 @@ describe('ATM', () => {
     expect(grandTotal / result.length).toEqual(withdrawAmmount)
   })
 
-  it('should return two configurations: one with higher bills, another with lower bills', () => {
+  it('should return two configurations: one with more higher bills, another with more lower bills', () => {
     const bills = [10, 20, 50, 100, 200]
     const billAmmounts = [10, 10, 10, 10, 10]
     const atm = new ATM(bills, billAmmounts)
