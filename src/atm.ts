@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class ATM {
   private readonly bills: number[]
   private readonly billAmmounts: number[]
