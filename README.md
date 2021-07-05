@@ -1,3 +1,3 @@
-# typescript-base
+# Everyday Algorithms
 
-Base typescript project with all necessary dependencies.
+This project contains algorithms we use everyday implemented in TypeScript.
