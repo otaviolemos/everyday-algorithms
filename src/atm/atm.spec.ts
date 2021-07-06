@@ -10,16 +10,6 @@ describe('ATM', () => {
 
     expect(result.some(element => areEquals(element, [2, 2, 0, 0]))).toBeTruthy()
     expect(result.some(element => areEquals(element, [1, 3, 2, 1]))).toBeTruthy()
-
-    const totals: number[] = new Array(result.length).fill(0)
-    let grandTotal = 0
-    for (let i = 0; i < result.length; i++) {
-      for (let j = 0; j < bills.length; j++) {
-        totals[i] += result[i][j] * bills[j]
-      }
-      grandTotal += totals[i]
-    }
-    expect(grandTotal / result.length).toEqual(withdrawAmmount)
   })
 
   it('should return two configurations: one with more higher bills, another with more lower bills', () => {
