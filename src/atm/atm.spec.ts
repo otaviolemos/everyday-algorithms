@@ -8,6 +8,9 @@ describe('ATM', () => {
     const withdrawAmmount = 300
     const result = ATM.solutions(bills, billAmmounts, initialVariation, withdrawAmmount, 0)
 
+    expect(result.some(element => areEquals(element, [2, 2, 0, 0]))).toBeTruthy()
+    expect(result.some(element => areEquals(element, [1, 3, 2, 1]))).toBeTruthy()
+
     const totals: number[] = new Array(result.length).fill(0)
     let grandTotal = 0
     for (let i = 0; i < result.length; i++) {
@@ -17,22 +20,6 @@ describe('ATM', () => {
       grandTotal += totals[i]
     }
     expect(grandTotal / result.length).toEqual(withdrawAmmount)
-
-    var foundHigherBillsConfiguration = false
-    var foundLowerBillsConfiguration = false
-
-    for (let i = 0; i < result.length; i++) {
-      if (areEquals(result[i], [2, 2, 0, 0])) {
-        foundHigherBillsConfiguration = true
-      } else if (areEquals(result[i], [1, 3, 2, 1])) {
-        foundLowerBillsConfiguration = true
-      }
-      if (foundHigherBillsConfiguration && foundLowerBillsConfiguration) {
-        break
-      }
-    }
-
-    expect(foundHigherBillsConfiguration && foundLowerBillsConfiguration).toBeTruthy()
   })
 
   it('should return two configurations: one with more higher bills, another with more lower bills', () => {
