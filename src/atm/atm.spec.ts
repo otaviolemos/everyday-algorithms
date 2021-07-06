@@ -24,8 +24,7 @@ describe('ATM', () => {
     for (let i = 0; i < result.length; i++) {
       if (areEquals(result[i], [2, 2, 0, 0])) {
         foundHigherBillsConfiguration = true
-      }
-      if (areEquals(result[i], [1, 3, 2, 1])) {
+      } else if (areEquals(result[i], [1, 3, 2, 1])) {
         foundLowerBillsConfiguration = true
       }
       if (foundHigherBillsConfiguration && foundLowerBillsConfiguration) {
