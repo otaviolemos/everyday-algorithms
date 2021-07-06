@@ -2,16 +2,16 @@ export class ATM {
   private readonly bills: number[]
   private readonly billAmmounts: number[]
 
-  constructor (bills: number[], billAmmounts: number[]) {
+  constructor (bills: number[], billAmounts: number[]) {
     this.bills = bills.sort((a, b) => b - a)
-    this.billAmmounts = billAmmounts
+    this.billAmmounts = billAmounts
   }
 
-  public getConfigurations (ammount: number): Configurations {
+  public getConfigurations (amount: number): Configurations {
     const billsCopy = [...this.bills]
-    const billAmmountsCopy = [...this.billAmmounts]
+    const billAmountsCopy = [...this.billAmmounts]
     const initialVariation = new Array(5).fill(0)
-    const allSolutions = ATM.solutions(billsCopy, billAmmountsCopy, initialVariation, ammount, 0)
+    const allSolutions = ATM.solutions(billsCopy, billAmountsCopy, initialVariation, amount, 0)
     const configurations: Configurations = {
       moreHigherBills: allSolutions[0],
       moreLowerBills: allSolutions[allSolutions.length - 1]
@@ -19,22 +19,22 @@ export class ATM {
     return configurations
   }
 
-  public static solutions (bills: number[], ammounts: number[], variation: number[], ammount: number, position: number):
+  public static solutions (bills: number[], amounts: number[], variation: number[], amount: number, position: number):
   number[][] {
     const list: number[][] = []
     const value: number = ATM.compute(bills, variation)
-    if (value < ammount) {
+    if (value < amount) {
       for (let i = position; i < bills.length; i++) {
-        if (ammounts[i] > variation[i]) {
+        if (amounts[i] > variation[i]) {
           const newvariation: number[] = [...variation]
           newvariation[i]++
-          const newList = ATM.solutions(bills, ammounts, newvariation, ammount, i)
+          const newList = ATM.solutions(bills, amounts, newvariation, amount, i)
           if (newList != null) {
             list.push(...newList)
           }
         }
       }
-    } else if (value === ammount) {
+    } else if (value === amount) {
       list.push(ATM.myCopy(variation))
     }
     return list
