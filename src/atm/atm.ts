@@ -1,8 +1,13 @@
+import { InvalidParamError } from './invalid-param-error'
+
 export class ATM {
   private readonly bills: number[]
   private readonly billAmmounts: number[]
 
   constructor (bills: number[], billAmounts: number[]) {
+    if (!ATM.isDescending(bills)) {
+      throw new InvalidParamError()
+    }
     this.bills = bills.sort((a, b) => b - a)
     this.billAmmounts = billAmounts
   }
@@ -54,6 +59,12 @@ export class ATM {
       ret[i] = ar[i]
     }
     return ret
+  }
+
+  private static isDescending (array: number[]): boolean {
+    return array.every(function (x, i) {
+      return i === 0 || x < array[i - 1]
+    })
   }
 }
 
