@@ -13,7 +13,7 @@ describe('ATM', () => {
   })
 
   it('should return two configurations: one with more higher bills, another with more lower bills', () => {
-    const bills = [10, 20, 50, 100, 200]
+    const bills = [200, 100, 50, 20, 10]
     const billAmounts = [10, 10, 10, 10, 10]
     const atm = new ATM(bills, billAmounts)
     const configurations = atm.getConfigurations(300)
