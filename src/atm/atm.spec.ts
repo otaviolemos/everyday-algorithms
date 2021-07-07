@@ -1,4 +1,5 @@
 import { ATM } from './atm'
+import { InvalidParamError } from './invalid-param-error'
 
 describe('ATM', () => {
   it('should return correct solutions for a given withdrawal amount', () => {
@@ -20,6 +21,15 @@ describe('ATM', () => {
     const higherBills = summation(configurations.moreHigherBills)
     const lowerBills = summation(configurations.moreLowerBills)
     expect(higherBills).toBeLessThan(lowerBills)
+  })
+
+  it('should throw when bills are not in descending order', () => {
+    const unoreredBills = [200, 100, 20, 50, 10]
+    const billAmounts = [10, 10, 10, 10, 10]
+    expect(() => {
+      const a = new ATM(unoreredBills, billAmounts)
+      console.log(a)
+    }).toThrow(InvalidParamError)
   })
 
   function summation (array: number[]): number {
