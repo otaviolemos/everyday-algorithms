@@ -32,7 +32,7 @@ describe('ATM', () => {
     }).toThrow(InvalidParamError)
   })
 
-  it('should throw when bills and billAmount are not the same size', () => {
+  it('should throw when bills and bill amounts are not the same size', () => {
     const unoreredBills = [200, 100, 50, 20, 10]
     const billAmounts = [10, 10, 10, 10]
     expect(() => {
