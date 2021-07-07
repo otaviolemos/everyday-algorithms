@@ -8,6 +8,9 @@ export class ATM {
     if (!ATM.isDescending(bills)) {
       throw new InvalidParamError()
     }
+    if (bills.length !== billAmounts.length) {
+      throw new InvalidParamError()
+    }
     this.bills = bills.sort((a, b) => b - a)
     this.billAmmounts = billAmounts
   }
