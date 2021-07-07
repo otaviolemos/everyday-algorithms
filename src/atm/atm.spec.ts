@@ -1,5 +1,7 @@
 import { ATM } from './atm'
 import { InvalidParamError } from './invalid-param-error'
+import sinon from 'sinon'
+import { performance } from 'perf_hooks'
 
 describe('ATM', () => {
   it('should return correct solutions for a given withdrawal amount', () => {
@@ -39,6 +41,20 @@ describe('ATM', () => {
       const a = new ATM(unoreredBills, billAmounts)
       console.log(a)
     }).toThrow(InvalidParamError)
+  })
+
+  test('performance test', () => {
+    const bills = [100, 50, 20, 10, 5, 2]
+    const billAmounts = [100, 100, 100, 100, 100, 100]
+    const initialVariation = new Array(4).fill(0)
+    const withdrawalAmount = 4053
+    const spy = sinon.spy(ATM, 'solutions')
+    const t0 = performance.now()
+    const result = ATM.solutions(bills, billAmounts, initialVariation, withdrawalAmount, 0)
+    const t1 = performance.now()
+    console.log(result)
+    console.log(spy.callCount)
+    console.log('Time taken to run all solutions: ' + `${t1 - t0}`)
   })
 
   function summation (array: number[]): number {
