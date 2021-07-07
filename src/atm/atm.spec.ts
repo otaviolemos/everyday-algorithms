@@ -32,6 +32,15 @@ describe('ATM', () => {
     }).toThrow(InvalidParamError)
   })
 
+  it('should throw when bills and billAmount are not the same size', () => {
+    const unoreredBills = [200, 100, 50, 20, 10]
+    const billAmounts = [10, 10, 10, 10]
+    expect(() => {
+      const a = new ATM(unoreredBills, billAmounts)
+      console.log(a)
+    }).toThrow(InvalidParamError)
+  })
+
   function summation (array: number[]): number {
     return array.reduce((a: number, b: number) => a + b, 0)
   }
