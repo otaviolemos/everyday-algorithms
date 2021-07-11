@@ -7,7 +7,7 @@ describe('ATM', () => {
   it('should return correct solutions for a given withdrawal amount', () => {
     const bills = [100, 50, 20, 10]
     const billAmounts = [10, 10, 10, 10]
-    const initialVariation = new Array(4).fill(0)
+    const initialVariation = new Array(bills.length).fill(0)
     const withdrawalAmount = 300
     const result = ATM.solutions(bills, billAmounts, initialVariation, withdrawalAmount, 0)
 
@@ -46,7 +46,7 @@ describe('ATM', () => {
   test('performance test', () => {
     const bills = [100, 50, 20, 10, 5, 2]
     const billAmounts = [100, 100, 100, 100, 100, 100]
-    const initialVariation = new Array(4).fill(0)
+    const initialVariation = new Array(bills.length).fill(0)
     const withdrawalAmount = 4053
     const spy = sinon.spy(ATM, 'solutions')
     const t0 = performance.now()
