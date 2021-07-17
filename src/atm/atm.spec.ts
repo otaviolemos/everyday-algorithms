@@ -44,8 +44,8 @@ describe('ATM', () => {
   })
 
   test('performance test', () => {
-    const bills = [100, 50, 20, 10, 5, 2]
-    const billAmounts = [100, 100, 100, 100, 100, 100]
+    const bills = [100, 50, 20]
+    const billAmounts = [100, 100, 100]
     const initialVariation = new Array(bills.length).fill(0)
     const withdrawalAmount = 4053
     const spy = sinon.spy(ATM, 'solutions')
